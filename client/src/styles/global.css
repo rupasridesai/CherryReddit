@@ -1,0 +1,172 @@
+:root {
+  --cream: #f9f5ef;
+  --pink: #f7d6e6;
+  --rose: #eaa6c8;
+  --burgundy: #6f1d2a;
+  --cherry: #d73a49;
+  --ink: #43332f;
+
+  --cream-deep: #f2ead9;
+  --line: rgba(67, 51, 47, 0.14);
+  --shadow-soft: 0 10px 30px -12px rgba(111, 29, 42, 0.22);
+  --shadow-lift: 0 18px 40px -16px rgba(111, 29, 42, 0.3);
+
+  --radius-lg: 26px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+
+  --font-display: 'Fraunces', 'Iowan Old Style', serif;
+  --font-body: 'Nunito', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background-color: var(--cream);
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 26px 26px;
+  background-position: -1px -1px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--burgundy);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--rose);
+  color: var(--burgundy);
+}
+
+/* Scrollbar candy */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--rose);
+  border-radius: 20px;
+  border: 2px solid var(--cream);
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Scalloped divider — a row of repeating circular bites cut from a solid band */
+.scallop-divider {
+  position: relative;
+  height: 22px;
+  width: 100%;
+  background: var(--pink);
+  -webkit-mask-image: radial-gradient(circle at 11px 0, transparent 11px, black 11.5px);
+  mask-image: radial-gradient(circle at 11px 0, transparent 11px, black 11.5px);
+  -webkit-mask-size: 22px 22px;
+  mask-size: 22px 22px;
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
+}
+
+.scallop-divider.flip {
+  transform: rotate(180deg);
+}
+
+.card {
+  background: #fffdfa;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+.btn:active { transform: scale(0.96); }
+
+.btn-primary {
+  background: var(--cherry);
+  color: #fff9f6;
+  box-shadow: var(--shadow-soft);
+}
+.btn-primary:hover { background: #c22e3c; box-shadow: var(--shadow-lift); }
+
+.btn-ghost {
+  background: var(--pink);
+  color: var(--burgundy);
+}
+.btn-ghost:hover { background: var(--rose); }
+
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--rose);
+  color: var(--burgundy);
+}
+.btn-outline:hover { background: var(--pink); }
+
+input, textarea, select {
+  font-family: var(--font-body);
+  border: 1.5px solid var(--line);
+  background: #fffdfa;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--rose);
+  box-shadow: 0 0 0 4px rgba(234, 166, 200, 0.35);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

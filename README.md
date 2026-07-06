@@ -118,34 +118,6 @@ GitHub itself only hosts static files (via GitHub Pages), so a MERN app needs th
 | Frontend | [Vercel](https://vercel.com) or [Netlify](https://netlify.com) | Import the repo, set root directory to `client`, add `VITE_API_URL=https://<your-render-app>.onrender.com/api`. |
 | Image uploads | [Cloudinary](https://cloudinary.com) free tier | Add the three `CLOUDINARY_*` keys to the backend's env vars. |
 
-### Steps
-
-1. **Push this repo to GitHub** (see below).
-2. **Atlas:** create a free cluster → get the connection string → note it for step 3.
-3. **Render:** New → Blueprint → connect your GitHub repo → it reads `render.yaml` → set `MONGO_URI`, `CLIENT_URL` (your future Vercel URL), and the `CLOUDINARY_*` vars when prompted → deploy. Note the resulting API URL (e.g. `https://cherryreddit-api.onrender.com`).
-4. **Vercel/Netlify:** New project → import the same GitHub repo → set root directory to `client` → add env var `VITE_API_URL=https://cherryreddit-api.onrender.com/api` → deploy.
-5. Go back to Render and set `CLIENT_URL` to your live Vercel/Netlify URL (for CORS), then redeploy the API.
-
-Every future `git push` to `main` auto-redeploys both sides.
-
----
-
-## 📤 Pushing this project to GitHub
-
-```bash
-cd cherryreddit
-git init
-git add .
-git commit -m "Initial commit: CherryReddit"
-git branch -M main
-git remote add origin https://github.com/<your-username>/cherryreddit.git
-git push -u origin main
-```
-
-`.env` files are already git-ignored, so secrets never get committed — double-check `git status` before your first push if you're unsure.
-
----
-
 ## 🎨 Design system
 
 | Token | Hex | Use |
@@ -170,18 +142,7 @@ Headings use **Fraunces** (vintage editorial serif); body text uses **Nunito** (
 - `helmet` for standard security headers
 - Ownership/role checks enforced server-side on every mutating route (post/comment edit & delete, moderation actions, admin actions)
 
----
-
-## 🧪 Test accounts (after running `npm run seed`)
-
-| Role | Email | Password |
-|---|---|---|
-| Admin | admin@cherryreddit.dev | password123 |
-| User | alice@cherryreddit.dev | password123 |
-| User | bob@cherryreddit.dev | password123 |
-
----
-
+- 
 ## License
 
 MIT — see [LICENSE](./LICENSE).
